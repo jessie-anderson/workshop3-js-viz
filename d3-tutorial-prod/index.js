@@ -26,7 +26,10 @@ window.onload = function(){
 
   var svgCircles = d3.select("svg.circles");
   var svgMap = d3.select("svg.map").call(zoom);
-
+  var attributesEnter = [{color: 'red', r: 40, cx: 100},  //example line
+                  {color: 'blue', r: 50, cx: 75},
+                  {color: 'purple', r: 20, cx: 40},
+                  {color: 'green', r: 60, cx: 120}];
   var circles = svgCircles.selectAll('circle')
                           .data(attributesEnter)
                           .enter()
@@ -36,11 +39,12 @@ window.onload = function(){
                           .attr('cx', cx)
                           .attr('cy', '50px');
 
+
   // ADD THE attributesExit HERE! Remember to repeat at least one of the elements of attributesEnter
-  // var attributesExit = ;
+   var attributesExit = [{color: 'red', r: 40, cx: 100}];
   //
-  // svgCircles.selectAll('circle')
-  //             .data(attributesExit)
-  //             .exit()
-  //             .attr("fill", changeColor);
+  svgCircles.selectAll('circle')
+               .data(attributesExit)
+               .exit()
+               .attr("fill", changeColor);
 };
